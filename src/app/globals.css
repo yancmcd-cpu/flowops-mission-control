@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg-base-1: #060810;
+  --bg-base-2: #0a1020;
+  --bg-base-3: #10182d;
+  --surface-1: rgba(14, 18, 30, 0.88);
+  --surface-2: rgba(18, 24, 38, 0.92);
+  --surface-3: rgba(22, 28, 46, 0.96);
+  --text-primary: #f4f7ff;
+  --text-secondary: #98a6c2;
+  --text-tertiary: #64748b;
+  --accent-indigo: #6f7cff;
+  --accent-cyan: #41d6ff;
+  --accent-violet: #a273ff;
+  --accent-green: #43d18d;
+  --accent-amber: #ffbf5f;
+  --accent-coral: #ff6b7a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(111, 124, 255, 0.22), transparent 28%),
+    radial-gradient(circle at 86% 14%, rgba(65, 214, 255, 0.18), transparent 24%),
+    radial-gradient(circle at 48% 2%, rgba(162, 115, 255, 0.12), transparent 26%),
+    radial-gradient(circle at 24% 64%, rgba(122, 132, 255, 0.08), transparent 26%),
+    radial-gradient(circle at 78% 70%, rgba(65, 214, 255, 0.07), transparent 24%),
+    linear-gradient(180deg, var(--bg-base-2), var(--bg-base-1) 45%, #05070d 100%);
+  color: var(--text-primary);
+  font-feature-settings: "tnum" 1, "cv02" 1, "cv03" 1, "cv04" 1;
+}
+
+body::before,
+body::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+body::before {
+  background:
+    radial-gradient(circle at top left, rgba(111, 124, 255, 0.16), transparent 30%),
+    radial-gradient(circle at top right, rgba(65, 214, 255, 0.14), transparent 28%),
+    radial-gradient(circle at center, rgba(162, 115, 255, 0.08), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%);
+}
+
+body::after {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 140px 140px;
+  opacity: 0.1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(111, 124, 255, 0.28);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070a11;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(152, 166, 194, 0.24);
+}
+
+@keyframes signalPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(65, 214, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(65, 214, 255, 0.14);
+  }
+}
+
+@keyframes dangerPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(255, 107, 122, 0);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255, 107, 122, 0.16);
+  }
+}
+
+.signal-pulse {
+  animation: signalPulse 4.2s ease-in-out infinite;
+}
+
+.danger-pulse {
+  animation: dangerPulse 4.8s ease-in-out infinite;
+}
