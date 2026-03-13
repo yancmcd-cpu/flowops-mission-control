@@ -7,7 +7,7 @@ export default function MetricsPage() {
     <GlassPanel className="overflow-hidden">
       <PanelHeader
         eyebrow="Operational Metrics"
-        title="Metrics"
+        title="Operational Metrics"
         description="High-level operating metrics for queue health, review load, workflow continuity, and opportunity movement."
       />
       <div className="p-5 sm:p-6">

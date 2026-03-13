@@ -2,12 +2,12 @@ import { GlassPanel } from "@/components/shared/GlassPanel";
 import { PanelHeader } from "@/components/shared/PanelHeader";
 import { opportunities } from "@/lib/mock-data";
 
-const stages = ["Lead", "Proposal", "Active", "Complete"];
+const stages = ["Initial Contact", "Discovery", "Proposal Sent", "Negotiation"];
 const stageSurfaceMap: Record<string, string> = {
-  Lead: "bg-[linear-gradient(180deg,rgba(122,132,255,0.10),rgba(255,255,255,0.02))] ring-[#7a84ff]/12",
-  Proposal: "bg-[linear-gradient(180deg,rgba(162,115,255,0.10),rgba(255,255,255,0.02))] ring-[#a273ff]/12",
-  Active: "bg-[linear-gradient(180deg,rgba(65,214,255,0.10),rgba(255,255,255,0.02))] ring-cyan/12",
-  Complete: "bg-[linear-gradient(180deg,rgba(67,209,141,0.10),rgba(255,255,255,0.02))] ring-emerald-400/12",
+  "Initial Contact": "bg-[linear-gradient(180deg,rgba(122,132,255,0.10),rgba(255,255,255,0.02))] ring-[#7a84ff]/12",
+  Discovery: "bg-[linear-gradient(180deg,rgba(162,115,255,0.10),rgba(255,255,255,0.02))] ring-[#a273ff]/12",
+  "Proposal Sent": "bg-[linear-gradient(180deg,rgba(65,214,255,0.10),rgba(255,255,255,0.02))] ring-cyan/12",
+  Negotiation: "bg-[linear-gradient(180deg,rgba(255,191,95,0.10),rgba(255,255,255,0.02))] ring-amber-400/12",
 };
 
 export function OpportunityPipeline() {
@@ -41,6 +41,10 @@ export function OpportunityPipeline() {
                       <span className="text-xs uppercase tracking-[0.18em] text-secondary">{item.classificationStatus}</span>
                     </div>
                     <div className="mt-4 grid gap-2 text-sm">
+                      <div className="flex items-center justify-between gap-3">
+                        <span className="text-secondary">Value</span>
+                        <span className="text-primary">{item.pipelineValue}</span>
+                      </div>
                       <div className="flex items-center justify-between gap-3">
                         <span className="text-secondary">Owner</span>
                         <span className="text-primary">{item.owner}</span>

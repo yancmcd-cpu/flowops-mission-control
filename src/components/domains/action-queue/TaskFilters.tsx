@@ -35,12 +35,9 @@ export function TaskFilters(props: TaskFiltersProps) {
       <div className="grid gap-3 lg:grid-cols-4">
         <select className={baseSelect} value={owner} onChange={(event) => onOwnerChange(event.target.value)}>
           <option value="All">Owner: All</option>
-          <option value="Alex">Alex</option>
-          <option value="Blake">Blake</option>
-          <option value="Chris">Chris</option>
-          <option value="Dana">Dana</option>
-          <option value="Iris">Iris</option>
-          <option value="Sofia">Sofia</option>
+          <option value="Yan">Yan</option>
+          <option value="System">System</option>
+          <option value="Client">Client</option>
         </select>
         <select className={baseSelect} value={source} onChange={(event) => onSourceChange(event.target.value)}>
           <option value="All">Source: All</option>

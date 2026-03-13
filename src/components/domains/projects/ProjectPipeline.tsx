@@ -3,12 +3,12 @@ import { GlassPanel } from "@/components/shared/GlassPanel";
 import { PanelHeader } from "@/components/shared/PanelHeader";
 import { projects } from "@/lib/mock-data";
 
-const columns = ["Proposal", "Active", "Implementation", "Complete"];
+const columns = ["Build", "QA", "Implementation", "Archived"];
 const columnSurfaceMap: Record<string, string> = {
-  Proposal: "bg-[linear-gradient(180deg,rgba(122,132,255,0.12),rgba(255,255,255,0.02))] ring-[#7a84ff]/12",
-  Active: "bg-[linear-gradient(180deg,rgba(65,214,255,0.10),rgba(255,255,255,0.02))] ring-cyan/12",
+  Build: "bg-[linear-gradient(180deg,rgba(122,132,255,0.12),rgba(255,255,255,0.02))] ring-[#7a84ff]/12",
+  QA: "bg-[linear-gradient(180deg,rgba(65,214,255,0.10),rgba(255,255,255,0.02))] ring-cyan/12",
   Implementation: "bg-[linear-gradient(180deg,rgba(255,191,95,0.10),rgba(255,255,255,0.02))] ring-amber-400/12",
-  Complete: "bg-[linear-gradient(180deg,rgba(67,209,141,0.10),rgba(255,255,255,0.02))] ring-emerald-400/12",
+  Archived: "bg-[linear-gradient(180deg,rgba(123,138,160,0.10),rgba(255,255,255,0.02))] ring-white/10",
 };
 
 export function ProjectPipeline() {
@@ -39,9 +39,13 @@ export function ProjectPipeline() {
                         <p className="text-sm font-semibold text-primary">{project.projectName}</p>
                         <p className="mt-1 text-sm text-secondary">{project.linkedClient}</p>
                       </div>
-                      {project.blockers > 0 ? <Badge tone="warning">{project.blockers} blockers</Badge> : <Badge tone={column === "Complete" ? "muted" : "cyan"}>{column === "Complete" ? "stable" : "moving"}</Badge>}
+                      {project.blockers > 0 ? <Badge tone="warning">{project.blockers} blockers</Badge> : <Badge tone={column === "Archived" ? "muted" : "cyan"}>{column === "Archived" ? "stable" : "moving"}</Badge>}
                     </div>
                     <div className="mt-4 grid gap-2 text-sm text-secondary">
+                      <div className="flex items-center justify-between gap-3">
+                        <span>Progress</span>
+                        <span className="text-primary">{project.progress}%</span>
+                      </div>
                       <div className="flex items-center justify-between gap-3">
                         <span>Phase</span>
                         <span className="text-primary">{project.currentPhase}</span>

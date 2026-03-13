@@ -119,7 +119,7 @@ export default function OverviewPage() {
             <p className="mt-3 text-4xl font-extrabold tracking-[-0.05em] text-primary">{openTasks}</p>
           </div>
           <div className="bg-[linear-gradient(135deg,rgba(162,115,255,0.14),rgba(255,255,255,0.02))] px-5 py-5">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-secondary">Review Load</p>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-secondary">Pending Reviews</p>
             <p className="mt-3 text-4xl font-extrabold tracking-[-0.05em] text-primary">{reviewLoad}</p>
           </div>
           <div className="bg-[linear-gradient(135deg,rgba(65,214,255,0.14),rgba(255,255,255,0.02))] px-5 py-5">
@@ -127,7 +127,7 @@ export default function OverviewPage() {
             <p className="mt-3 text-4xl font-extrabold tracking-[-0.05em] text-primary">{manualTasks}</p>
           </div>
           <div className="bg-[linear-gradient(135deg,rgba(255,107,122,0.14),rgba(255,255,255,0.02))] px-5 py-5">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-secondary">Blockers</p>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-secondary">Critical Blockers</p>
             <p className="mt-3 text-4xl font-extrabold tracking-[-0.05em] text-rose-300">{blockers}</p>
           </div>
         </div>
@@ -153,6 +153,7 @@ export default function OverviewPage() {
                     <p className="mt-3 text-xs uppercase tracking-[0.18em] text-tertiary">{project.linkedClient}</p>
                   </div>
                   <div className="space-y-1 text-sm text-right">
+                    <p className="text-primary">{project.progress}%</p>
                     <p className={project.blockers > 0 ? "text-amber-300" : "text-cyan"}>{project.blockers > 0 ? `${project.blockers} blockers` : "Moving"}</p>
                     <p className="text-secondary">{project.nextProjectAction}</p>
                   </div>
@@ -173,7 +174,7 @@ export default function OverviewPage() {
                     <span className="text-xs uppercase tracking-[0.18em] text-secondary">{item.pipelineStage}</span>
                   </div>
                   <div className="mt-2 flex items-center justify-between gap-3 text-sm">
-                    <span className="text-secondary">{item.owner}</span>
+                    <span className="text-secondary">{item.pipelineValue}</span>
                     <span className="text-secondary">{item.classificationStatus}</span>
                   </div>
                 </div>

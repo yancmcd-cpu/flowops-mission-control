@@ -35,6 +35,7 @@ export type ProjectRecord = {
   blockers: number;
   nextProjectAction: string;
   linkedTasks: number;
+  progress: number;
 };
 
 export type OpportunityRecord = {
@@ -46,6 +47,7 @@ export type OpportunityRecord = {
   nextOpportunityAction: string;
   classificationStatus: string;
   linkedTasks: number;
+  pipelineValue: string;
 };
 
 export type WorkflowNode = {

@@ -15,7 +15,7 @@ export function ActivityTimeline() {
     <GlassPanel className="overflow-hidden">
       <PanelHeader
         eyebrow="System Activity"
-        title="Activity"
+        title="System Activity"
         description="Chronological reflective summaries presented as a readable operational ledger."
       />
       <div className="bg-[linear-gradient(180deg,rgba(8,11,16,0.98),rgba(6,8,12,0.98))] px-5 py-4 font-mono text-[13px] sm:px-6">
