@@ -9,7 +9,11 @@ import { useEffect, useState } from "react";
 
 export function PreviewTopStrip({ variant }: { variant: PreviewVariant }) {
   const pathname = usePathname();
-  const previewNavigationItems = getPreviewNavigationItems(variant);
+  const previewNavigationRaw = getPreviewNavigationItems(variant);
+  const previewNavigationItems =
+    pathname === "/" && variant === "c"
+      ? previewNavigationRaw.map((item, index) => (index === 0 ? { ...item, href: "/" } : item))
+      : previewNavigationRaw;
   const current = previewNavigationItems.find((item) => item.href === pathname) ?? previewNavigationItems[0];
   const [scrolled, setScrolled] = useState(false);
 

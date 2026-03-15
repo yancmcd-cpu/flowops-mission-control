@@ -13,10 +13,10 @@ import {
 import { opportunities, projects, workflows } from "@/lib/mock-data";
 import Link from "next/link";
 
-export function MissionControlVariantC() {
+export function MissionControlVariantC({ showSwitcher = true }: { showSwitcher?: boolean }) {
   return (
     <div className="space-y-6">
-      <VariantSwitcher current="/preview/mission-control/variant-c" />
+      {showSwitcher ? <VariantSwitcher current="/preview/mission-control/variant-c" /> : null}
 
       <div className="grid gap-4 xl:grid-cols-5">
         {[

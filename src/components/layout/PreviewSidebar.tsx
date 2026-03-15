@@ -77,7 +77,14 @@ type SidebarContentProps = {
 function SidebarContent({ variant, onNavigate }: SidebarContentProps) {
   const pathname = usePathname();
   const inboxCount = tasks.filter((task) => task.status === "Inbox").length;
-  const previewNavigation = getPreviewNavigation(variant);
+  const previewNavigationRaw = getPreviewNavigation(variant);
+  const previewNavigation =
+    pathname === "/" && variant === "c"
+      ? {
+          ...previewNavigationRaw,
+          primary: previewNavigationRaw.primary.map((item, index) => (index === 0 ? { ...item, href: "/" } : item)),
+        }
+      : previewNavigationRaw;
 
   return (
     <div className="flex h-full flex-col">

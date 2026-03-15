@@ -15,10 +15,11 @@ type AppShellProps = {
 
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
-  const isPreview = pathname.startsWith("/preview/mission-control");
+  const isPromotedRoot = pathname === "/";
+  const isPreview = isPromotedRoot || pathname.startsWith("/preview/mission-control");
 
   if (isPreview) {
-    const previewVariant = getPreviewVariant(pathname);
+    const previewVariant = isPromotedRoot ? "c" : getPreviewVariant(pathname);
     const shell = getPreviewShellClasses(previewVariant);
 
     return (
