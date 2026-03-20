@@ -1,5 +1,5 @@
-import { PreviewDashboard } from "@/components/preview/mission-control/PreviewDashboard";
+import { AgencyOverview } from "@/components/domains/agency-overview/AgencyOverview";
 
 export default function MissionControlPreviewPage() {
-  return <PreviewDashboard />;
+  return <AgencyOverview />;
 }

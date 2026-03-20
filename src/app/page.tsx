@@ -1,5 +1,5 @@
-import { MissionControlVariantC } from "@/components/preview/mission-control/variants/VariantC";
+import { AgencyOverview } from "@/components/domains/agency-overview/AgencyOverview";
 
 export default function OverviewPage() {
-  return <MissionControlVariantC showSwitcher={false} />;
+  return <AgencyOverview />;
 }

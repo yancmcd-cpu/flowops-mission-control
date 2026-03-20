@@ -15,7 +15,8 @@ type AppShellProps = {
 
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
-  const isPromotedRoot = pathname === "/";
+  const promotedRoutes = ["/", "/tasks", "/projects", "/pipeline", "/workflows"];
+  const isPromotedRoot = promotedRoutes.includes(pathname);
   const isPreview = isPromotedRoot || pathname.startsWith("/preview/mission-control");
 
   if (isPreview) {

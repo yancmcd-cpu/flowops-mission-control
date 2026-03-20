@@ -1,7 +1,7 @@
 "use client";
 
+import { useMissionControlData } from "@/components/providers/MissionControlDataProvider";
 import { Badge } from "@/components/shared/Badge";
-import { tasks } from "@/lib/mock-data";
 import { getPreviewNavigation, type PreviewVariant } from "@/lib/preview-navigation";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
@@ -75,14 +75,24 @@ type SidebarContentProps = {
 };
 
 function SidebarContent({ variant, onNavigate }: SidebarContentProps) {
+  const {
+    data: { tasks },
+  } = useMissionControlData();
   const pathname = usePathname();
-  const inboxCount = tasks.filter((task) => task.status === "Inbox").length;
+  const openQueueCount = tasks.filter((task) => !["Complete", "Completed", "Archived"].includes(task.status)).length;
   const previewNavigationRaw = getPreviewNavigation(variant);
   const previewNavigation =
-    pathname === "/" && variant === "c"
+    ["/", "/tasks", "/projects", "/pipeline", "/workflows"].includes(pathname) && variant === "c"
       ? {
           ...previewNavigationRaw,
-          primary: previewNavigationRaw.primary.map((item, index) => (index === 0 ? { ...item, href: "/" } : item)),
+          primary: previewNavigationRaw.primary.map((item, index) => {
+            if (index === 0) return { ...item, href: "/" };
+            if (item.label === "Tasks") return { ...item, href: "/tasks" };
+            if (item.label === "Projects") return { ...item, href: "/projects" };
+            if (item.label === "Pipeline") return { ...item, href: "/pipeline" };
+            if (item.label === "Workflow") return { ...item, href: "/workflows" };
+            return item;
+          }),
         }
       : previewNavigationRaw;
 
@@ -100,7 +110,7 @@ function SidebarContent({ variant, onNavigate }: SidebarContentProps) {
 
       <div className="flex-1 overflow-y-auto px-3 pb-4">
         <div className="rounded-[28px] bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.015))] px-2 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-          <NavSection items={previewNavigation.primary} pathname={pathname} onNavigate={onNavigate} inboxCount={inboxCount} />
+          <NavSection items={previewNavigation.primary} pathname={pathname} onNavigate={onNavigate} inboxCount={openQueueCount} />
         </div>
       </div>
     </div>

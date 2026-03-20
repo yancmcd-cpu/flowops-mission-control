@@ -1,13 +1,9 @@
 import {
-  Activity,
-  BarChart3,
-  BookOpenText,
   FolderKanban,
   GitBranch,
   LayoutDashboard,
   ListTodo,
   Radar,
-  ShieldCheck,
 } from "lucide-react";
 
 export type PreviewVariant = "base" | "a" | "b" | "c";
@@ -20,17 +16,11 @@ type PreviewNavItem = {
 
 const navDefinitions = {
   primary: [
-    { slug: "", label: "Dashboard", icon: LayoutDashboard },
+    { slug: "", label: "Agency Overview", icon: LayoutDashboard },
     { slug: "tasks", label: "Tasks", icon: ListTodo },
     { slug: "projects", label: "Projects", icon: FolderKanban },
     { slug: "pipeline", label: "Pipeline", icon: Radar },
-    { slug: "workflows", label: "Workflows", icon: GitBranch },
-  ],
-  system: [
-    { slug: "activity", label: "Activity", icon: Activity },
-    { slug: "metrics", label: "Metrics", icon: BarChart3 },
-    { slug: "skill-factory", label: "Skill Factory", icon: ShieldCheck },
-    { slug: "knowledge-review", label: "Knowledge Review", icon: BookOpenText },
+    { slug: "workflows", label: "Workflow", icon: GitBranch },
   ],
 } as const;
 
@@ -57,22 +47,21 @@ export function getPreviewBasePath(variant: PreviewVariant): string {
 export function getPreviewNavigation(variant: PreviewVariant): { primary: PreviewNavItem[]; system: PreviewNavItem[] } {
   const base = getPreviewBasePath(variant);
 
-  const mapSection = (section: typeof navDefinitions.primary | typeof navDefinitions.system) =>
-    section.map((item) => ({
-      href: item.slug ? `${base}/${item.slug}` : base,
-      label: item.label,
-      icon: item.icon,
-    }));
+  const primary = navDefinitions.primary.map((item) => ({
+    href: item.slug ? `${base}/${item.slug}` : base,
+    label: item.label,
+    icon: item.icon,
+  }));
 
   return {
-    primary: mapSection(navDefinitions.primary),
-    system: mapSection(navDefinitions.system),
+    primary,
+    system: [],
   };
 }
 
 export function getPreviewNavigationItems(variant: PreviewVariant): PreviewNavItem[] {
   const navigation = getPreviewNavigation(variant);
-  return [...navigation.primary, ...navigation.system];
+  return [...navigation.primary];
 }
 
 export const previewNavigation = getPreviewNavigation("base");
