@@ -12,9 +12,11 @@ const priorityLaneMap: Record<TaskRecord["priority"], string> = {
 const statusToneMap: Record<TaskRecord["status"], "cyan" | "blue" | "muted" | "warning" | "danger"> = {
   Inbox: "blue",
   "To Do": "muted",
+  Open: "blue",
   "In Progress": "cyan",
   Waiting: "warning",
   Review: "blue",
+  Complete: "cyan",
   Completed: "cyan",
   Archived: "muted",
 };

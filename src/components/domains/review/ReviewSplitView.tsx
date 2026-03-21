@@ -13,6 +13,21 @@ type ReviewSplitViewProps = {
 export function ReviewSplitView({ eyebrow, title, description, items }: ReviewSplitViewProps) {
   const selected = items[0];
 
+  if (!selected) {
+    return (
+      <GlassPanel className="overflow-hidden">
+        <PanelHeader eyebrow={eyebrow} title={title} description={description} />
+        <div className="px-5 py-10 sm:px-6">
+          <div className="rounded-3xl bg-white/[0.03] px-6 py-8 text-center">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-secondary">Empty Queue</p>
+            <h3 className="mt-3 text-xl font-semibold tracking-[-0.04em] text-primary">No review items</h3>
+            <p className="mt-3 text-sm text-secondary">This section is no longer part of the main Mission Control workflow and currently has no queued records.</p>
+          </div>
+        </div>
+      </GlassPanel>
+    );
+  }
+
   return (
     <GlassPanel className="overflow-hidden">
       <PanelHeader eyebrow={eyebrow} title={title} description={description} />
