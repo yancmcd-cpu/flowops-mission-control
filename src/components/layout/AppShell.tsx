@@ -15,12 +15,10 @@ type AppShellProps = {
 
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
-  const promotedRoutes = ["/", "/tasks", "/projects", "/pipeline", "/workflows"];
-  const isPromotedRoot = promotedRoutes.includes(pathname);
-  const isPreview = isPromotedRoot || pathname.startsWith("/preview/mission-control");
+  const isPreview = pathname.startsWith("/preview/mission-control");
 
   if (isPreview) {
-    const previewVariant = isPromotedRoot ? "c" : getPreviewVariant(pathname);
+    const previewVariant = getPreviewVariant(pathname);
     const shell = getPreviewShellClasses(previewVariant);
 
     return (
@@ -39,10 +37,10 @@ export function AppShell({ children }: AppShellProps) {
   }
 
   return (
-    <div className="min-h-screen bg-navy text-primary">
-      <div className="flex min-h-screen">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(122,132,255,0.12),transparent_24%),radial-gradient(circle_at_78%_16%,rgba(65,214,255,0.08),transparent_22%),linear-gradient(180deg,#07090f,#0a0d15_45%,#06080d)] text-primary">
+      <div className="flex min-h-screen gap-3 px-3 py-3 lg:gap-4 lg:px-4 lg:py-4">
         <Sidebar />
-        <div className="flex min-h-screen min-w-0 flex-1 flex-col">
+        <div className="flex min-h-[calc(100vh-1.5rem)] min-w-0 flex-1 flex-col rounded-[34px] bg-[linear-gradient(180deg,rgba(11,14,21,0.86),rgba(8,10,16,0.8))] shadow-[0_24px_80px_rgba(0,0,0,0.30)] backdrop-blur-sm">
           <TopStrip />
           <main className="flex-1">
             <div className="mx-auto max-w-cockpit px-4 py-8 sm:px-6 lg:px-10 lg:py-10">{children}</div>
